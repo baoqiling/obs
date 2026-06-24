@@ -73,8 +73,8 @@ fun Application.configureRouting() {
 
     val oauthSettings = OAuthServerSettings.OAuth2ServerSettings(
         name = "obs-auth",
-        authorizeUrl = "https://auth.bhxz.host/api/v1/oauth2/authorize",
-        accessTokenUrl = "https://auth.bhxz.host/api/v1/oauth2/token",
+        authorizeUrl = "https://auth.bhxz.net/api/v1/oauth2/authorize",
+        accessTokenUrl = "https://auth.bhxz.net/api/v1/oauth2/token",
         clientId = "mDKHz21veM22y63vdPhNTdVElYy7nywN",
         clientSecret = "3xK1j6ZG2yqrz1gcPqdAt5Cwb29uyYO0OQDYPA6WoDWpFJE3YZ9x3OCB7nPXJwEo",
         defaultScopes = listOf("get_user_info")
@@ -179,7 +179,7 @@ fun Application.configureRouting() {
                     return@get
                 }
                 // 验证 accessToken
-                val userInfoResponse = httpClient.get("https://auth.bhxz.host/api/v1/oauth2/userinfo") {
+                val userInfoResponse = httpClient.get("https://auth.bhxz.net/api/v1/oauth2/userinfo") {
                     headers {
                         append(HttpHeaders.Authorization, "Bearer $accessToken")
                     }
@@ -283,8 +283,8 @@ fun main() {
 //    docker()
 //    lib14()
 
-    lib16()
-//    lib6016()
+    lib18()
+    lib6019()
 
 
 }
@@ -308,10 +308,10 @@ fun base64Encode(input: String): String {
     val bytes = input.toByteArray()
     return Base64.getEncoder().encodeToString(bytes)
 }
-fun lib6016(){
+fun lib6019(){
     //     releases.bhxz/center6/6.0.1.5/
-    var BSServerSetup = encrypt("releases.bhxz=center6/6.0.1.6/BSServerSetup.exe", AES_KEY)
-    println("lib6_BSServerSetup:"+ base64Encode(BSServerSetup))
+    var BSServerSetup = encrypt("releases.bhxz=center6/6.0.1.9/BSServerSetup.exe", AES_KEY)
+    println("center6_BSServerSetup:"+ base64Encode(BSServerSetup))
 }
 
 fun lib12(){
@@ -352,17 +352,17 @@ fun lib14(){
     var BSServerSetup = encrypt("releases.bhxz=center7/7.1.1.14/BSServerSetup.exe", AES_KEY)
     println("BSServerSetup:"+ base64Encode(BSServerSetup))
 }
-fun lib16(){
-    var aarch64_71113 = encrypt("releases.bhxz=center7/7.1.1.16/center7116-docker-arm64-20260605.tar.gz", AES_KEY)
-    println("aarch64_71116:"+ base64Encode(aarch64_71113))
+fun lib18(){
+    var aarch64_71113 = encrypt("releases.bhxz=center7/7.1.1.18/center7118-docker-arm64-20260623.tar.gz", AES_KEY)
+    println("aarch64_71118:"+ base64Encode(aarch64_71113))
 
-    var x86_71113 = encrypt("releases.bhxz=center7/7.1.1.16/center7116-docker-x86-64-20260605.tar.gz", AES_KEY)
-    println("x86_71116:"+ base64Encode(x86_71113))
+    var x86_71113 = encrypt("releases.bhxz=center7/7.1.1.18/center7118-docker-x86-64-20260623.tar.gz", AES_KEY)
+    println("x86_71118:"+ base64Encode(x86_71113))
 
-    var BSServerSetup = encrypt("releases.bhxz=center7/7.1.1.16/BSServerSetup.exe", AES_KEY)
+    var BSServerSetup = encrypt("releases.bhxz=center7/7.1.1.18/BSServerSetup.exe", AES_KEY)
     println("BSServerSetup:"+ base64Encode(BSServerSetup))
 
-    var docker = encrypt("releases.bhxz=center7/7.1.1.16/docker-install.zip", AES_KEY)
+    var docker = encrypt("releases.bhxz=center7/7.1.1.18/docker-install.zip", AES_KEY)
     println("docker:"+ base64Encode(docker))
 }
 
