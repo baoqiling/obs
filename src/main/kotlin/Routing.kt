@@ -284,7 +284,7 @@ fun main() {
 //    lib14()
 
     lib18()
-    lib6019()
+//    lib6019()
 
 
 }
@@ -353,10 +353,10 @@ fun lib14(){
     println("BSServerSetup:"+ base64Encode(BSServerSetup))
 }
 fun lib18(){
-    var aarch64_71113 = encrypt("releases.bhxz=center7/7.1.1.18/center7118-docker-arm64-20260623.tar.gz", AES_KEY)
+    var aarch64_71113 = encrypt("releases.bhxz=center7/7.1.1.18/center7118-docker-arm64-20260626.tar.gz", AES_KEY)
     println("aarch64_71118:"+ base64Encode(aarch64_71113))
 
-    var x86_71113 = encrypt("releases.bhxz=center7/7.1.1.18/center7118-docker-x86-64-20260623.tar.gz", AES_KEY)
+    var x86_71113 = encrypt("releases.bhxz=center7/7.1.1.18/center7118-docker-x86-64-20260626.tar.gz", AES_KEY)
     println("x86_71118:"+ base64Encode(x86_71113))
 
     var BSServerSetup = encrypt("releases.bhxz=center7/7.1.1.18/BSServerSetup.exe", AES_KEY)
