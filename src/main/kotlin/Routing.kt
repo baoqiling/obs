@@ -73,8 +73,8 @@ fun Application.configureRouting() {
 
     val oauthSettings = OAuthServerSettings.OAuth2ServerSettings(
         name = "obs-auth",
-        authorizeUrl = "https://auth.bhxz.wiki/api/v1/oauth2/authorize",
-        accessTokenUrl = "https://auth.bhxz.wiki/api/v1/oauth2/token",
+        authorizeUrl = "https://auth.bhxz.net/api/v1/oauth2/authorize",
+        accessTokenUrl = "https://auth.bhxz.net/api/v1/oauth2/token",
         clientId = "mDKHz21veM22y63vdPhNTdVElYy7nywN",
         clientSecret = "3xK1j6ZG2yqrz1gcPqdAt5Cwb29uyYO0OQDYPA6WoDWpFJE3YZ9x3OCB7nPXJwEo",
         defaultScopes = listOf("get_user_info")
@@ -179,7 +179,7 @@ fun Application.configureRouting() {
                     return@get
                 }
                 // 验证 accessToken
-                val userInfoResponse = httpClient.get("https://auth.bhxz.wiki/api/v1/oauth2/userinfo") {
+                val userInfoResponse = httpClient.get("https://auth.bhxz.net/api/v1/oauth2/userinfo") {
                     headers {
                         append(HttpHeaders.Authorization, "Bearer $accessToken")
                     }
