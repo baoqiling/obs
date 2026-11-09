@@ -9,13 +9,9 @@ import io.ktor.client.request.*
 import io.ktor.client.request.forms.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
-import io.ktor.http.content.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.auth.*
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
-import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
@@ -23,10 +19,8 @@ import io.ktor.utils.io.core.*
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.time.Duration
-import java.util.*
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
 import kotlin.collections.set
@@ -49,7 +43,7 @@ data class AccessTokenResponse(
 data class UserSession(val accessToken: String, val code: String, val state: String? = null,val redirectState: String? = null) : Principal
 
 // 定义全局的 urlProvider 函数
-fun getCallbackUrl(): String = "http://build.bhxz.host:18998/package/auth"
+fun getCallbackUrl(): String = "http://114.241.205.244:49257/package/auth"
 
 fun Application.configureRouting() {
 
@@ -73,8 +67,8 @@ fun Application.configureRouting() {
 
     val oauthSettings = OAuthServerSettings.OAuth2ServerSettings(
         name = "obs-auth",
-        authorizeUrl = "https://auth.bhxz.net/api/v1/oauth2/authorize",
-        accessTokenUrl = "https://auth.bhxz.net/api/v1/oauth2/token",
+        authorizeUrl = "https://auth.bhxz.wiki/api/v1/oauth2/authorize",
+        accessTokenUrl = "https://auth.bhxz.wiki/api/v1/oauth2/token",
         clientId = "mDKHz21veM22y63vdPhNTdVElYy7nywN",
         clientSecret = "3xK1j6ZG2yqrz1gcPqdAt5Cwb29uyYO0OQDYPA6WoDWpFJE3YZ9x3OCB7nPXJwEo",
         defaultScopes = listOf("get_user_info")
@@ -179,7 +173,7 @@ fun Application.configureRouting() {
                     return@get
                 }
                 // 验证 accessToken
-                val userInfoResponse = httpClient.get("https://auth.bhxz.net/api/v1/oauth2/userinfo") {
+                val userInfoResponse = httpClient.get("https://auth.bhxz.wiki/api/v1/oauth2/userinfo") {
                     headers {
                         append(HttpHeaders.Authorization, "Bearer $accessToken")
                     }
